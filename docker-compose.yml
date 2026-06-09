@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # SQL Server 2019 for on-prem development
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: cfp-sqlserver
+    environment:
+      SA_PASSWORD: "YourStrong!Password123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql/data
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "YourStrong!Password123", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Azure Blob Storage emulator (Azurite)
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    container_name: cfp-azurite
+    ports:
+      - "10000:10000"  # Blob
+      - "10001:10001"  # Queue
+      - "10002:10002"  # Table
+    volumes:
+      - azurite_data:/data
+    command: azurite --blobHost 0.0.0.0 --loose
+
+volumes:
+  sqlserver_data:
+  azurite_data:
+
+networks:
+  default:
+    name: cfp-network
