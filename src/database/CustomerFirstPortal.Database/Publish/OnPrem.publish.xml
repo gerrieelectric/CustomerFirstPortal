@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current"
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <TargetDatabaseName>CustomerFirstPortal</TargetDatabaseName>
+        <TargetConnectionString>Data Source=YOUR-SQL-SERVER;Initial Catalog=CustomerFirstPortal;Integrated Security=True;TrustServerCertificate=True;</TargetConnectionString>
+        <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+        <DropObjectsNotInSource>False</DropObjectsNotInSource>
+        <BackupDatabaseBeforeChanges>True</BackupDatabaseBeforeChanges>
+        <CreateNewDatabase>False</CreateNewDatabase>
+        <RegisterDataTierApplication>True</RegisterDataTierApplication>
+    </PropertyGroup>
+</Project>

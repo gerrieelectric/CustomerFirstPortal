@@ -1,0 +1,146 @@
+.analytics-container {
+  padding: 1.25rem 1.25rem 1.5rem;
+  max-width: 1260px;
+  margin: 0 auto;
+
+  .analytics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+
+    h1 {
+      margin: 0;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--app-heading);
+    }
+  }
+
+  .alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+
+    &.alert-error {
+      background-color: color-mix(in srgb, #dc2626 14%, var(--app-surface));
+      color: var(--app-text);
+      border: 1px solid color-mix(in srgb, #dc2626 45%, var(--app-border));
+    }
+  }
+
+  .analytics-grid {
+    display: grid;
+    gap: 1rem;
+    align-items: stretch;
+
+    .section-full {
+      grid-column: 1 / -1;
+
+      h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1.15rem;
+        color: var(--app-heading);
+      }
+    }
+
+    .section-half {
+      grid-column: span 1;
+      min-width: 0;
+      display: flex;
+
+      app-status-breakdown,
+      app-approval-metrics {
+        display: block;
+        width: 100%;
+      }
+
+      @media (max-width: 1024px) {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 0.75rem;
+  }
+
+  :host ::ng-deep .kpi-grid app-kpi-card {
+    display: block;
+    height: 100%;
+  }
+
+  :host ::ng-deep .kpi-grid app-kpi-card > p-card {
+    display: block;
+    height: 100%;
+  }
+
+  :host ::ng-deep .component-card.p-card,
+  :host ::ng-deep .kpi-card.p-card {
+    height: 100%;
+    padding: 0 !important;
+    border-radius: 10px;
+    border: 1px solid var(--app-border);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  }
+
+  :host ::ng-deep .component-card.p-card {
+    min-height: 6.5rem;
+  }
+
+  :host ::ng-deep .kpi-card.p-card {
+    min-height: 5.8rem;
+  }
+
+  :host ::ng-deep .component-card .p-card-body,
+  :host ::ng-deep .kpi-card .p-card-body {
+    padding: 0.7rem 0.85rem 0.8rem !important;
+  }
+
+  :host ::ng-deep .kpi-card .p-card-body {
+    padding: 0.58rem 0.8rem 0.62rem !important;
+  }
+
+  :host ::ng-deep .component-card .p-card-title {
+    margin-bottom: 0.45rem;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--app-heading);
+  }
+
+  :host ::ng-deep .component-card .p-card-content,
+  :host ::ng-deep .kpi-card .p-card-content {
+    padding: 0 !important;
+  }
+
+  :host ::ng-deep .kpi-grid .kpi-card .p-card-body,
+  :host ::ng-deep .kpi-grid .kpi-card .p-card-content {
+    height: 100%;
+  }
+
+  :host ::ng-deep .kpi-card .p-tag {
+    margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.9rem 0.75rem 1rem;
+
+    .analytics-header {
+      align-items: flex-start;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    .analytics-header h1 {
+      font-size: 1.35rem;
+    }
+  }
+}

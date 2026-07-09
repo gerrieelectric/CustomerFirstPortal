@@ -2,21 +2,19 @@
 
 ## The Fastest Way to Start
 
-### Option 1: With Docker (Recommended for First Time)
+### Prerequisites
+1. SQL Server running and reachable at your configured connection string
+2. Update `src/backend/Portal.Api/appsettings.Local.json` with your SQL Server details
+3. Run the initial EF migration
+4. Start the backend and frontend servers
+
+### Setup Steps
 
 ```bash
-# Navigate to the project
-cd C:/repos/CustomerFirstPortal
-
-# Start SQL Server and Blob Storage
-docker-compose up -d
-
-# Wait ~10 seconds for services to be ready, then:
-
 # Terminal 1: Backend
 cd src/backend
 dotnet restore
-dotnet ef database update
+./.tools/dotnet-ef.exe database update --project ./Portal.Infrastructure --startup-project ./Portal.Api
 dotnet run
 
 # Terminal 2: Frontend
@@ -25,8 +23,8 @@ npm install
 npm start
 ```
 
-That's it! You'll have:
-- ✅ API running at `https://localhost:5001/api`
+You'll have:
+- ✅ API running at `https://localhost:5001`
 - ✅ Frontend at `http://localhost:4200`
 - ✅ SQL Server at `localhost:1433`
 - ✅ Swagger docs at `https://localhost:5001/swagger`

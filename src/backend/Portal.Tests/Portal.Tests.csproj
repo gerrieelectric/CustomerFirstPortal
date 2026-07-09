@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Portal.Api\Portal.Api.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,167 @@
+.component-card {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--app-heading);
+  }
+
+  .table-container {
+    overflow-x: auto;
+
+    .table-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+
+      .search-input,
+      .filter-select {
+        border: 1px solid var(--app-border);
+        border-radius: 6px;
+        background: var(--app-surface-muted);
+        color: var(--app-text);
+        padding: 0.55rem 0.75rem;
+        min-height: 2.5rem;
+      }
+
+      .search-input {
+        flex: 1;
+        min-width: 16rem;
+      }
+
+      .filter-select {
+        min-width: 12rem;
+      }
+    }
+
+    .nominees-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        background-color: var(--app-surface-muted);
+
+        tr th {
+          padding: 0.75rem;
+          text-align: left;
+          font-weight: 600;
+          color: var(--app-text);
+          border-bottom: 2px solid var(--app-border);
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          cursor: pointer;
+          user-select: none;
+
+          &:hover {
+            color: var(--app-heading);
+          }
+
+          &.p-highlight {
+            color: var(--app-heading);
+          }
+        }
+
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid var(--app-border);
+          transition: background-color 0.2s;
+
+          &:hover {
+            background-color: var(--app-accent-soft);
+          }
+
+          td {
+            padding: 0.75rem;
+            vertical-align: middle;
+            text-align: left;
+
+            &.nominee-name {
+              font-weight: 500;
+
+              .nominee-email {
+                font-size: 0.75rem;
+                color: var(--app-muted-text);
+                margin-top: 0.25rem;
+              }
+            }
+
+            &.date {
+              color: var(--app-muted-text);
+              font-size: 0.875rem;
+            }
+
+            .badge {
+              display: inline-block;
+              padding: 0.35rem 0.65rem;
+              border-radius: 4px;
+              font-size: 0.75rem;
+              font-weight: 600;
+
+              &.badge-info {
+                background-color: var(--app-accent-soft);
+                color: var(--app-text);
+              }
+
+              &.badge-success {
+                background-color: var(--app-accent-soft);
+                color: var(--app-text);
+              }
+            }
+
+            .rating {
+              display: flex;
+              align-items: center;
+              gap: 0.25rem;
+              font-weight: 500;
+
+              .star {
+                color: #ffc107;
+              }
+            }
+          }
+        }
+      }
+
+      .filtered-empty-state {
+        text-align: center;
+        padding: 1.25rem;
+        color: var(--app-muted-text);
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--app-muted-text);
+  }
+}
+
+:host ::ng-deep .p-sortable-column-icon {
+  margin-left: 0.4rem;
+  color: var(--app-muted-text);
+}
+
+:host ::ng-deep .nominees-table .p-datatable-thead > tr > th,
+:host ::ng-deep .nominees-table .p-datatable-tbody > tr > td {
+  text-align: left;
+}
+
+:host ::ng-deep .nominees-table .p-datatable-thead > tr > th.p-datatable-column-sorted {
+  background: var(--app-accent-soft);
+  color: var(--app-heading);
+}
+
+:host ::ng-deep .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: var(--app-accent);
+}

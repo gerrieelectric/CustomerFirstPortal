@@ -1,7 +1,9 @@
 <Solution>
+  <Project Path="../database/CustomerFirstPortal.Database/CustomerFirstPortal.Database.sqlproj" Id="b2154b76-b4b9-4ad9-bda4-0e227b1fb83e">
+    <Build />
+    <Deploy />
+  </Project>
   <Project Path="Portal.Api/Portal.Api.csproj" />
-  <Project Path="Portal.Application/Portal.Application.csproj" />
   <Project Path="Portal.Domain/Portal.Domain.csproj" />
-  <Project Path="Portal.Infrastructure/Portal.Infrastructure.csproj" />
   <Project Path="Portal.Tests/Portal.Tests.csproj" />
 </Solution>

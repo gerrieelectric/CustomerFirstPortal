@@ -1,6 +1,6 @@
-# CustomerFirstPortal Copilot Instructions
+# Customer First Employee Driven Copilot Instructions
 
-This document provides Copilot with workspace-specific guidance for the Customer First Portal project.
+This document provides Copilot with workspace-specific guidance for the Customer First Employee Driven project.
 
 ## Project Overview
 

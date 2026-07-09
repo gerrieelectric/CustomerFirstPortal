@@ -1,6 +1,6 @@
-# Setup Guide - Customer First Portal
+# Setup Guide - Customer First Employee Driven
 
-Welcome to the Customer First Portal project! This guide will help you get your development environment set up.
+Welcome to the Customer First Employee Driven project! This guide will help you get your development environment set up.
 
 ## Phase 1 Overview
 
@@ -10,24 +10,13 @@ Phase 1 delivers two submission forms (employee→employee, employee→customer-
 
 - **Node.js**: 20+ ([download](https://nodejs.org/))
 - **.NET SDK**: 10+ ([download](https://dotnet.microsoft.com/download))
-- **SQL Server**: 2019+ (local, on-prem, or container)
-- **Docker & Docker Compose**: For containerized local environment
+- **SQL Server**: 2019+ (local or on-prem)
 - **Git**: For version control
 - **VS Code**: Recommended editor with C# and Angular extensions
 
-## Quick Start (Docker)
+## Quick Start
 
-The fastest way to set up the full stack locally:
-
-```bash
-# 1. Clone the repo and navigate to it
-cd CustomerFirstPortal
-
-# 2. Start all services with docker-compose
-docker-compose up -d
-
-# This starts:
-# - SQL Server on localhost:1433 (sa/YourStrong!Password123)
+Set up your development environment:
 # - Azurite (Azure Storage emulator) on localhost:10000
 
 # 3. In a new terminal, set up the backend

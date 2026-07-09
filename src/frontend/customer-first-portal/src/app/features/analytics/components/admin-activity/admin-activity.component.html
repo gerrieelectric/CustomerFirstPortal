@@ -1,0 +1,43 @@
+<p-card styleClass="component-card">
+  <ng-template pTemplate="title">Admin Review Activity</ng-template>
+  <div class="table-container" *ngIf="data && data.adminStats.length > 0">
+    <p-table
+      [value]="data.adminStats"
+      styleClass="admin-table"
+      [tableStyle]="{ 'min-width': '60rem' }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Admin</th>
+          <th>Reviews</th>
+          <th>Approvals</th>
+          <th>Rejections</th>
+          <th>Avg Time</th>
+          <th>Last Review</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-admin>
+        <tr>
+          <td class="admin-name">
+            <strong>{{ admin.adminName }}</strong>
+            <div class="admin-email">{{ admin.adminEmail }}</div>
+          </td>
+          <td>
+            {{ admin.totalReviewsCompleted }}
+          </td>
+          <td>
+            {{ admin.approvalsCount }}
+          </td>
+          <td>
+            {{ admin.rejectionsCount }}
+          </td>
+          <td class="time">{{ admin.averageReviewTimeHours.toFixed(1) }}h</td>
+          <td class="date">{{ admin.lastReviewUtc | date: "short" }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div *ngIf="data && data.adminStats.length === 0" class="empty-state">
+    No admin activity data available
+  </div>
+</p-card>

@@ -1,0 +1,34 @@
+<Project>
+  <Sdk Name="Microsoft.Build.Sql" Version="2.1.0" />
+  <PropertyGroup>
+    <Name>CustomerFirstPortal.Database</Name>
+    <ProjectGuid>{b2154b76-b4b9-4ad9-bda4-0e227b1fb83e}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <SqlServerVersion>Sql140</SqlServerVersion>
+    <RootNamespace>CustomerFirstPortal.Database</RootNamespace>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <TreatVerificationErrorsAsWarnings>false</TreatVerificationErrorsAsWarnings>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <BuildFromSSDT>false</BuildFromSSDT>
+    <SSDTPath>$(NuGetPackageRoot)microsoft.build.sql\2.1.0\tools\net472</SSDTPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Build Include="Schema\\Tables\\AdminUsers.sql" />
+    <Build Include="Schema\\Tables\\Submissions.sql" />
+    <Build Include="Schema\\Tables\\SubmissionAttachments.sql" />
+    <Build Include="Schema\\Tables\\SubmissionReviews.sql" />
+    <Build Include="Schema\\Tables\\GerrieSyncEvents.sql" />
+    <Build Include="Schema\\Tables\\AuditEvents.sql" />
+    <Build Include="Schema\\Views\\vwNomineeRecognitionSummary.sql" />
+    <PostDeploy Include="Scripts\\PostDeploy.sql" />
+    <None Include="Publish\\OnPrem.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Schema\" />
+    <Folder Include="Schema\Tables\" />
+    <Folder Include="Schema\Views\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Publish\" />
+  </ItemGroup>
+</Project>

@@ -1,1 +1,767 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'primeicons/primeicons.css';
+
+:root {
+	color-scheme: light !important;
+	--app-bg: #e6e8ec;
+	--app-surface: #ffffff;
+	--app-surface-muted: #f8fafc;
+	--app-text: #1f2937;
+	--app-heading: #0b4a86;
+	--app-muted-text: #5f6b7a;
+	--app-border: #d8e0ea;
+	--app-accent: #1273cb;
+	--app-accent-soft: #f7fbff;
+	--app-footer-bg: #f9f9f9;
+	--app-footer-text: #5f6b7a;
+	--app-navbar-overlay-start: rgba(12, 79, 154, 0.88);
+	--app-navbar-overlay-end: rgba(10, 102, 194, 0.9);
+	--app-control-radius: 8px;
+	--submission-background-image: radial-gradient(
+		circle at 20% 8%,
+		#f4f6f9 0%,
+		#d6dae1 64%,
+		#c7cbd2 100%
+	);
+
+
+html,
+body {
+	color-scheme: light !important;
+}
+	/* PrimeNG surface fallback tokens to keep components light. */
+	--p-surface-0: var(--app-surface);
+	--p-surface-50: #f8fafc;
+	--p-surface-100: #f1f5f9;
+	--p-surface-200: #e2e8f0;
+	--p-text-color: #1f2937;
+	--p-text-muted-color: #64748b;
+	--p-content-background: var(--app-surface);
+	--p-inputtext-background: var(--app-surface-muted);
+	--p-inputtext-border-color: var(--app-border);
+	--p-inputtext-color: var(--app-text);
+	--p-inputtext-hover-border-color: var(--app-accent);
+	--p-inputtext-focus-border-color: var(--app-accent);
+	--p-textarea-background: var(--app-surface-muted);
+	--p-textarea-border-color: var(--app-border);
+	--p-textarea-color: var(--app-text);
+	--p-textarea-hover-border-color: var(--app-accent);
+	--p-textarea-focus-border-color: var(--app-accent);
+	--p-button-secondary-background: var(--app-surface-muted);
+	--p-button-secondary-border-color: var(--app-border);
+	--p-button-secondary-color: var(--app-text);
+	--p-button-secondary-hover-background: var(--app-accent-soft);
+	--p-button-secondary-hover-border-color: var(--app-accent-soft);
+	--p-button-secondary-hover-color: var(--app-text);
+	--p-content-border-color: var(--app-border);
+	--p-select-background: var(--app-surface-muted);
+	--p-select-border-color: var(--app-border);
+	--p-select-color: var(--app-text);
+	--p-select-placeholder-color: var(--app-muted-text);
+	--p-select-dropdown-color: var(--app-muted-text);
+	--p-select-focus-border-color: var(--app-accent);
+	--p-select-overlay-background: var(--app-surface);
+	--p-select-overlay-border-color: var(--app-border);
+	--p-select-option-color: var(--app-text);
+	--p-select-option-focus-color: var(--app-text);
+	--p-select-option-focus-background: var(--app-surface-muted);
+	--p-select-option-selected-background: var(--app-accent-soft);
+	--p-select-option-selected-color: var(--app-text);
+	--p-textarea-background: var(--app-surface-muted);
+	--p-textarea-border-color: var(--app-border);
+	--p-textarea-color: var(--app-text);
+	--p-textarea-hover-border-color: var(--app-accent);
+	--p-textarea-focus-border-color: var(--app-accent);
+	--p-fileupload-background: var(--app-surface);
+	--p-fileupload-border-color: var(--app-border);
+	--p-fileupload-color: var(--app-text);
+	--p-fileupload-header-background: var(--app-surface-muted);
+	--p-fileupload-header-color: var(--app-text);
+	--p-fileupload-content-background: var(--app-surface);
+	--p-fileupload-content-color: var(--app-text);
+	--p-card-background: var(--app-surface);
+	--p-card-color: var(--app-text);
+	--p-card-border-color: var(--app-border);
+	--p-card-title-color: var(--app-heading);
+	--p-card-subtitle-color: var(--app-muted-text);
+	--p-progressbar-background: var(--app-surface-muted);
+	--p-progressbar-value-background: var(--app-accent);
+	--p-menu-background: var(--app-surface);
+	--p-menu-border-color: var(--app-border);
+	--p-menu-color: var(--app-text);
+	--p-menu-item-color: var(--app-text);
+	--p-menu-item-focus-background: var(--app-accent-soft);
+	--p-menu-item-focus-color: var(--app-text);
+}
+html,
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	background: var(--app-bg);
+	color: var(--app-text);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'SF Pro Text', 'SF Pro Display', 'San Francisco', 'Segoe UI',
+		Tahoma, Geneva, Verdana, sans-serif;
+	background: var(--app-bg);
+	color: var(--app-text);
+	--p-select-background: var(--app-surface-muted);
+	--p-select-border-color: var(--app-border);
+	--p-select-color: var(--app-text);
+	--p-select-placeholder-color: var(--app-muted-text);
+	--p-select-dropdown-color: var(--app-muted-text);
+	--p-textarea-background: var(--app-surface-muted);
+	--p-textarea-border-color: var(--app-border);
+	--p-textarea-color: var(--app-text);
+	--p-textarea-hover-border-color: var(--app-accent);
+	--p-textarea-focus-border-color: var(--app-accent);
+	--p-select-overlay-background: var(--app-surface);
+	--p-select-overlay-border-color: var(--app-border);
+	--p-select-option-color: var(--app-text);
+	--p-select-option-focus-color: var(--app-text);
+	--p-select-option-focus-background: var(--app-surface-muted);
+	--p-select-option-selected-background: var(--app-accent-soft);
+	--p-select-option-selected-color: var(--app-text);
+	--p-fileupload-background: var(--app-surface);
+	--p-fileupload-border-color: var(--app-border);
+	--p-fileupload-color: var(--app-text);
+	--p-fileupload-header-background: var(--app-surface-muted);
+	--p-fileupload-header-color: var(--app-text);
+	--p-fileupload-content-background: var(--app-surface);
+	--p-fileupload-content-color: var(--app-text);
+	--p-card-background: var(--app-surface);
+	--p-card-color: var(--app-text);
+	--p-card-border-color: var(--app-border);
+	--p-card-title-color: var(--app-heading);
+	--p-card-subtitle-color: var(--app-muted-text);
+	--p-progressbar-background: var(--app-surface-muted);
+	--p-progressbar-value-background: var(--app-accent);
+	--p-menu-background: var(--app-surface);
+	--p-menu-border-color: var(--app-border);
+	--p-menu-color: var(--app-text);
+	--p-menu-item-color: var(--app-text);
+	--p-menu-item-focus-background: var(--app-accent-soft);
+	--p-menu-item-focus-color: var(--app-text);
+}
+
+.p-select {
+	background: var(--p-select-background);
+	border-color: var(--p-select-border-color);
+	color: var(--p-select-color);
+}
+
+.p-select .p-select-label {
+	color: var(--p-select-color);
+}
+
+.p-select .p-select-label.p-placeholder {
+	color: var(--p-select-placeholder-color);
+}
+
+.p-select .p-select-dropdown {
+	color: var(--p-select-dropdown-color);
+}
+
+.p-select-overlay {
+	background: var(--p-select-overlay-background);
+	border-color: var(--p-select-overlay-border-color);
+	color: var(--p-select-option-color);
+}
+
+.p-select-option {
+	color: var(--p-select-option-color);
+}
+
+.p-select-option.p-focus {
+	background: var(--p-select-option-focus-background);
+	color: var(--p-select-option-focus-color);
+}
+
+.p-select-option.p-select-option-selected {
+	background: var(--p-select-option-selected-background);
+	color: var(--p-select-option-selected-color);
+}
+
+.p-fileupload-advanced {
+	background: var(--p-fileupload-background);
+	border-color: var(--p-fileupload-border-color);
+	color: var(--p-fileupload-color);
+}
+
+.p-fileupload-advanced .p-fileupload-header {
+	background: var(--p-fileupload-header-background);
+	color: var(--p-fileupload-header-color);
+	border-color: var(--p-fileupload-border-color);
+}
+
+.p-fileupload-advanced .p-fileupload-content {
+	background: var(--p-fileupload-content-background);
+	color: var(--p-fileupload-content-color);
+}
+
+.p-card {
+	background: var(--app-surface);
+	border: 1px solid var(--app-border);
+	color: var(--app-text);
+}
+
+.p-card .p-card-title {
+	color: var(--app-heading);
+}
+
+.p-card .p-card-subtitle {
+	color: var(--app-muted-text);
+}
+
+.p-message {
+	background: var(--app-surface-muted);
+	border: 1px solid var(--app-border);
+	color: var(--app-text);
+}
+
+.p-message .p-message-content,
+.p-message .p-message-text,
+.p-message .p-message-icon {
+	color: inherit;
+}
+
+.p-inputtext,
+.p-inputtextarea {
+	background: var(--app-surface-muted) !important;
+	border-color: var(--app-border) !important;
+	color: var(--app-text) !important;
+}
+
+.p-textarea {
+	background: var(--app-surface-muted) !important;
+	border-color: var(--app-border) !important;
+	color: var(--app-text) !important;
+}
+
+.p-inputtext::placeholder,
+.p-inputtextarea::placeholder {
+	color: var(--app-muted-text);
+}
+
+.p-textarea::placeholder {
+	color: var(--app-muted-text);
+}
+
+.p-inputtext:enabled:focus,
+.p-inputtextarea:enabled:focus {
+	border-color: var(--app-accent) !important;
+	box-shadow: none;
+}
+
+.p-textarea:enabled:focus {
+	border-color: var(--app-accent) !important;
+	box-shadow: none;
+}
+
+.p-button-secondary {
+	background: var(--app-surface-muted) !important;
+	border-color: var(--app-border) !important;
+	color: var(--app-text) !important;
+}
+
+.p-button-secondary:not(:disabled):hover {
+	background: var(--app-accent-soft) !important;
+	border-color: var(--app-accent-soft) !important;
+	color: var(--app-text) !important;
+}
+
+.p-datatable {
+	color: var(--app-text);
+}
+
+.p-datatable .p-datatable-header,
+.p-datatable .p-datatable-thead > tr > th {
+	background: var(--app-surface-muted);
+	border-color: var(--app-border);
+	color: var(--app-text);
+}
+
+.p-datatable .p-datatable-tbody > tr > td,
+.p-datatable .p-datatable-tfoot > tr > td {
+	background: var(--app-surface);
+	border-color: var(--app-border);
+	color: var(--app-text);
+}
+
+.p-datatable .p-datatable-tbody > tr:not(.p-highlight):hover > td {
+	background: var(--app-accent-soft);
+}
+
+.p-paginator {
+	background: var(--app-surface);
+	border-color: var(--app-border);
+	color: var(--app-text);
+}
+
+.p-tag {
+	border: 1px solid var(--app-border);
+}
+
+.p-progressbar {
+	background: var(--app-surface-muted) !important;
+	border: 1px solid var(--app-border);
+}
+
+.p-progressbar .p-progressbar-value {
+	background: var(--app-accent) !important;
+}
+
+.p-progressbar .p-progressbar-label {
+	color: #ffffff;
+}
+
+.p-menu {
+	background: var(--app-surface) !important;
+	border-color: var(--app-border) !important;
+	color: var(--app-text) !important;
+}
+
+.p-menu .p-menu-item-link {
+	color: var(--app-text) !important;
+}
+
+.p-menu .p-menu-item-icon {
+	color: var(--app-muted-text) !important;
+}
+
+.p-menu .p-menu-item-content {
+	border-radius: calc(var(--app-control-radius) - 2px);
+}
+
+.p-menu .p-menu-item-content:hover,
+.p-menu .p-menu-item-content:focus-within {
+	background: var(--app-accent-soft) !important;
+}
+
+button,
+.p-button,
+input:not([type='checkbox']):not([type='radio']),
+textarea,
+select,
+.p-inputtext,
+.p-inputtextarea,
+.p-select,
+.p-dropdown,
+.form-control,
+.form-input {
+	border-radius: var(--app-control-radius) !important;
+}
+
+.recognition-form-page {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0;
+	min-height: 100vh;
+	background: var(--submission-background-image);
+}
+
+.recognition-form-page .form-wrapper {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 2.25rem 3rem 2rem;
+	background: var(--app-surface);
+}
+
+.recognition-form-page form {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-height: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.recognition-form-page .form-row {
+	margin-bottom: 1rem;
+}
+
+.recognition-form-page .two-col-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.9rem;
+}
+
+.recognition-form-page .form-group {
+	width: 100%;
+}
+
+.recognition-form-page label {
+	display: block;
+	margin-bottom: 0.45rem;
+	font-weight: 600;
+	color: var(--app-text);
+	font-size: 0.96rem;
+}
+
+.recognition-form-page .field-hint {
+	margin: 0.45rem 0 0;
+	color: var(--app-muted-text);
+	font-size: 0.8rem;
+	font-weight: 400;
+}
+
+.recognition-form-page .form-control {
+	width: 100%;
+	padding: 0.66rem 0.78rem;
+	border: 1px solid var(--app-border);
+	border-radius: var(--app-control-radius);
+	font-size: 0.92rem;
+	transition: border-color 0.2s ease;
+	background: var(--app-surface-muted);
+	color: var(--app-text);
+}
+
+.recognition-form-page .form-control::placeholder {
+	color: var(--app-muted-text);
+}
+
+.recognition-form-page .form-control:focus {
+	outline: none;
+	border-color: var(--app-accent);
+	background: var(--app-surface);
+}
+
+.recognition-form-page .form-control.textarea {
+	resize: vertical;
+	min-height: 84px;
+	font-family: inherit;
+}
+
+.recognition-form-page .nominee-select {
+	width: 100%;
+}
+
+.recognition-form-page .company-name-autocomplete.p-autocomplete {
+	display: block;
+	width: 100%;
+}
+
+.recognition-form-page .company-name-autocomplete.p-autocomplete .p-autocomplete-input {
+	width: 100%;
+}
+
+.recognition-form-page .company-field-hint {
+	display: block;
+}
+
+.recognition-form-page .nominee-select.p-select {
+	width: 100%;
+	border-radius: var(--app-control-radius);
+	border: 1px solid var(--app-border);
+	background: var(--app-surface-muted);
+}
+
+.recognition-form-page .nominee-select.p-select .p-select-label {
+	color: var(--app-text);
+}
+
+.recognition-form-page .nominee-select.p-select .p-select-label.p-placeholder {
+	color: var(--app-muted-text);
+}
+
+.recognition-form-page .nominee-select.p-select .p-select-dropdown {
+	color: var(--app-muted-text);
+}
+
+.recognition-form-page .nominee-select.p-select:not(.p-disabled).p-focus {
+	border-color: var(--app-accent);
+	box-shadow: none;
+}
+
+.recognition-form-page .nominee-option {
+	display: flex;
+	align-items: center;
+	min-height: 2.8rem;
+}
+
+.recognition-form-page .nominee-info {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: 0;
+}
+
+.recognition-form-page .nominee-name {
+	font-weight: 600;
+	font-size: 0.92rem;
+}
+
+.recognition-form-page .nominee-meta {
+	font-size: 0.76rem;
+	color: var(--app-muted-text);
+}
+
+.recognition-form-page .avatar-large {
+	margin-right: 0.65rem;
+	flex-shrink: 0;
+}
+
+.recognition-form-page .char-count {
+	display: block;
+	margin-top: 0.4rem;
+	color: var(--app-muted-text);
+	font-size: 0.75rem;
+	text-align: right;
+}
+
+.recognition-form-page .form-row-rating {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.3rem;
+	margin-top: 0.3rem;
+}
+
+.recognition-form-page .rating-group {
+	--rating-diamond-size: 2.75rem;
+	--rating-column-width: 5.1rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.recognition-form-page .rating-group label {
+	width: 100%;
+	text-align: center;
+}
+
+.recognition-form-page .diamond-rating {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, var(--rating-column-width)));
+	justify-content: center;
+	column-gap: 0.75rem;
+	margin-top: 0.3rem;
+	width: 100%;
+}
+
+.recognition-form-page .rating-diamond {
+	width: var(--rating-diamond-size);
+	height: var(--rating-diamond-size);
+	border: 1px solid var(--app-border);
+	border-radius: 0 !important;
+	background: var(--app-surface-muted);
+	transform: rotate(45deg);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	justify-self: center;
+	cursor: pointer;
+	transition:
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.recognition-form-page .rating-diamond:focus-visible {
+	outline: 2px solid var(--app-accent);
+	outline-offset: 4px;
+}
+
+.recognition-form-page .rating-diamond span {
+	transform: rotate(-45deg);
+	color: var(--app-muted-text);
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.recognition-form-page .rating-diamond.active {
+	border-color: var(--app-accent);
+	background: var(--app-accent);
+}
+
+.recognition-form-page .rating-diamond.active span {
+	color: #ffffff;
+}
+
+.recognition-form-page .rating-diamond:hover {
+	border-color: var(--app-accent);
+}
+
+.recognition-form-page .rating-labels {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, var(--rating-column-width)));
+	justify-content: center;
+	column-gap: 0.75rem;
+	margin-top: 0.48rem;
+	width: 100%;
+}
+
+.recognition-form-page .rating-labels span {
+	width: 100%;
+	text-align: center;
+	font-size: 0.72rem;
+	color: var(--app-muted-text);
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	white-space: normal;
+	line-height: 1.2;
+}
+
+.recognition-form-page .error {
+	color: #d32f2f;
+	font-size: 0.76rem;
+	margin-top: 0.45rem;
+	display: block;
+	font-weight: 500;
+}
+
+.recognition-form-page .form-actions {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.recognition-form-page .form-actions p-button button {
+	border-radius: var(--app-control-radius);
+	min-width: 8.8rem;
+	padding: 0.65rem 1.8rem;
+	font-size: 0.88rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.recognition-form-page .form-messages {
+	margin-bottom: 1rem;
+}
+
+.recognition-form-page .form-messages p-message .p-message {
+	margin: 0 0 0.5rem;
+}
+
+.recognition-form-page .attachment-uploader .p-fileupload {
+	width: 100%;
+}
+
+.recognition-form-page .attachment-uploader .p-fileupload-advanced {
+	background: var(--app-surface);
+	border: 1px solid var(--app-border);
+	color: var(--app-text);
+	border-radius: var(--app-control-radius);
+}
+
+.recognition-form-page .attachment-uploader .p-fileupload-header {
+	background: var(--app-surface-muted);
+	border-bottom: 1px solid var(--app-border);
+	color: var(--app-text);
+}
+
+.recognition-form-page .attachment-uploader .p-fileupload-choose {
+	border-radius: var(--app-control-radius);
+	border: 1px dashed var(--app-border);
+	background: var(--app-surface-muted);
+	padding: 1.5rem;
+}
+
+.recognition-form-page .attachment-uploader .p-button {
+	border-radius: var(--app-control-radius);
+}
+
+.recognition-form-page .attachment-uploader .p-fileupload-content {
+	margin-top: 0.75rem;
+	background: var(--app-surface);
+	color: var(--app-text);
+}
+
+.recognition-form-page .attachment-uploader ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+.recognition-form-page .attachment-uploader li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	border: 1px solid var(--app-border);
+	border-radius: var(--app-control-radius);
+	background: var(--app-surface-muted);
+	padding: 0.45rem 0.6rem;
+}
+
+.recognition-form-page .attachment-item {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	flex: 1;
+	min-width: 0;
+}
+
+.recognition-form-page .attachment-name {
+	flex: 1;
+	min-width: 0;
+	font-size: 0.84rem;
+	color: var(--app-text);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-weight: 500;
+}
+
+.recognition-form-page .attachment-size {
+	flex-shrink: 0;
+	white-space: nowrap;
+	font-size: 0.76rem;
+	color: var(--app-muted-text);
+}
+
+.recognition-form-page .attachment-uploader li .p-button {
+	flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+	.recognition-form-page {
+		padding: 0;
+	}
+
+	.recognition-form-page .form-wrapper {
+		padding: 1.25rem 0.9rem 1.4rem;
+	}
+
+	.recognition-form-page .two-col-row {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.recognition-form-page .form-row-rating {
+		align-items: center;
+		gap: 1.6rem;
+	}
+
+	.recognition-form-page .diamond-rating {
+		column-gap: 0.5rem;
+	}
+
+	.recognition-form-page .rating-labels {
+		column-gap: 0.5rem;
+	}
+
+	.recognition-form-page .rating-group {
+		--rating-column-width: 3.55rem;
+	}
+
+	.recognition-form-page .rating-labels span {
+		font-size: 0.67rem;
+	}
+
+	.recognition-form-page .form-actions {
+		justify-content: center;
+	}
+}

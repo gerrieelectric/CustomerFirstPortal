@@ -1,0 +1,99 @@
+.component-card {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--app-heading);
+  }
+
+  .table-container {
+    overflow-x: auto;
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        background-color: var(--app-surface-muted);
+
+        tr th {
+          padding: 0.75rem;
+          text-align: left;
+          font-weight: 600;
+          color: var(--app-text);
+          border-bottom: 2px solid var(--app-border);
+          font-size: 0.875rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid var(--app-border);
+          transition: background-color 0.2s;
+
+          &:hover {
+            background-color: var(--app-accent-soft);
+          }
+
+          td {
+            padding: 0.75rem;
+            vertical-align: middle;
+
+            &.admin-name {
+              font-weight: 500;
+
+              .admin-email {
+                font-size: 0.75rem;
+                color: var(--app-muted-text);
+                margin-top: 0.25rem;
+              }
+            }
+
+            &.time,
+            &.date {
+              color: var(--app-muted-text);
+              font-size: 0.875rem;
+            }
+
+            .badge {
+              display: inline-block;
+              padding: 0.35rem 0.65rem;
+              border-radius: 4px;
+              font-size: 0.75rem;
+              font-weight: 600;
+
+              &.badge-primary {
+                background-color: var(--app-accent-soft);
+                color: var(--app-text);
+              }
+
+              &.badge-success {
+                background-color: var(--app-accent-soft);
+                color: var(--app-text);
+              }
+
+              &.badge-danger {
+                background-color: var(--app-accent-soft);
+                color: var(--app-text);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--app-muted-text);
+  }
+}

@@ -1,0 +1,250 @@
+<div class="nomination-report-container">
+  <!-- Filters -->
+  <div class="report-filters">
+    <div class="filter-row">
+      <div class="filter-group">
+        <label for="range-type">Date Range:</label>
+        <p-select
+          id="range-type"
+          [(ngModel)]="selectedRangeType"
+          [options]="rangeTypeOptions"
+          optionLabel="label"
+          optionValue="value"
+          (onChange)="onFilterChange()"
+          styleClass="w-100"
+        />
+      </div>
+
+      <div class="filter-group">
+        <label for="type-filter">Nomination Type:</label>
+        <p-select
+          id="type-filter"
+          [(ngModel)]="selectedTypeFilter"
+          [options]="typeFilterOptions"
+          optionLabel="label"
+          optionValue="value"
+          (onChange)="onFilterChange()"
+          styleClass="w-100"
+        />
+      </div>
+    </div>
+
+    <!-- Reference Date (for non-custom ranges) -->
+    <div class="filter-row" *ngIf="showReferenceDateInput">
+      <div class="filter-group">
+        <label for="reference-date">Reference Date (optional):</label>
+        <p-datepicker
+          id="reference-date"
+          [(ngModel)]="referenceDate"
+          (onSelect)="onFilterChange()"
+          [showIcon]="true"
+          dateFormat="mm/dd/yy"
+          styleClass="w-100"
+        />
+      </div>
+    </div>
+
+    <!-- Custom Date Range -->
+    <div class="filter-row" *ngIf="showCustomDateInputs">
+      <div class="filter-group">
+        <label for="start-date"
+          >Start Date:
+          <span
+            class="required-indicator"
+            *ngIf="selectedRangeType === ReportDateRangeType.Custom"
+            >*</span
+          >
+        </label>
+        <p-datepicker
+          id="start-date"
+          [(ngModel)]="customStartDate"
+          (onSelect)="onFilterChange()"
+          [showIcon]="true"
+          dateFormat="mm/dd/yy"
+          styleClass="w-100"
+        />
+        <small
+          *ngIf="
+            selectedRangeType === ReportDateRangeType.Custom && !customStartDate
+          "
+          class="error-text"
+          >Required</small
+        >
+      </div>
+      <div class="filter-group">
+        <label for="end-date"
+          >End Date:
+          <span
+            class="required-indicator"
+            *ngIf="selectedRangeType === ReportDateRangeType.Custom"
+            >*</span
+          >
+        </label>
+        <p-datepicker
+          id="end-date"
+          [(ngModel)]="customEndDate"
+          (onSelect)="onFilterChange()"
+          [showIcon]="true"
+          dateFormat="mm/dd/yy"
+          styleClass="w-100"
+        />
+        <small
+          *ngIf="
+            selectedRangeType === ReportDateRangeType.Custom && !customEndDate
+          "
+          class="error-text"
+          >Required</small
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <p-message
+    *ngIf="error"
+    severity="error"
+    [text]="error"
+    styleClass="w-100 mb-3"
+  />
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-indicator">Loading report...</div>
+
+  <!-- Report Tables -->
+  <div *ngIf="report && !isLoading" class="report-content">
+    <div class="report-info">
+      <div class="report-meta">
+        <small>
+          Report period: {{ formatDate(report.rangeStartUtc) }} to
+          {{ formatDate(report.rangeEndUtc) }} | Generated:
+          {{ formatDateTime(report.generatedUtc) }}
+        </small>
+      </div>
+      <div class="export-buttons">
+        <button
+          (click)="exportTopNominatedCsv()"
+          class="export-btn"
+          title="Export most nominated employees as CSV"
+        >
+          📥 Export Top Nominated
+        </button>
+        <button
+          (click)="exportTopApprovedCsv()"
+          class="export-btn"
+          title="Export most approved nominations as CSV"
+        >
+          📥 Export Top Approved
+        </button>
+        <button
+          (click)="exportAllReportsCsv()"
+          class="export-btn export-btn-primary"
+          title="Export both reports as one CSV"
+        >
+          📥 Export All
+        </button>
+      </div>
+    </div>
+
+    <div class="tables-row">
+      <!-- Top Nominated Table -->
+      <div class="table-column">
+        <p-card>
+          <ng-template pTemplate="header">
+            <h3>Most Nominated Employees</h3>
+          </ng-template>
+          <p-table
+            [value]="report.topNominated"
+            [tableStyle]="{ 'min-width': '100%' }"
+            responsiveLayout="scroll"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="nomineeName" style="width: 40%">
+                  Name <p-sortIcon field="nomineeName" />
+                </th>
+                <th pSortableColumn="totalNominations" style="width: 30%">
+                  Total <p-sortIcon field="totalNominations" />
+                </th>
+                <th style="width: 30%">Department</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-nominee>
+              <tr>
+                <td>
+                  <strong>{{ nominee.nomineeName }}</strong>
+                  <br />
+                  <small *ngIf="nominee.nomineeEmail">{{
+                    nominee.nomineeEmail
+                  }}</small>
+                </td>
+                <td>
+                  <span class="badge badge-info">{{
+                    nominee.totalNominations
+                  }}</span>
+                </td>
+                <td>{{ nominee.department || "—" }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="3" class="text-center">
+                  No nominations found for this period
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-card>
+      </div>
+
+      <!-- Top Approved Table -->
+      <div class="table-column">
+        <p-card>
+          <ng-template pTemplate="header">
+            <h3>Most Approved Nominations</h3>
+          </ng-template>
+          <p-table
+            [value]="report.topApproved"
+            [tableStyle]="{ 'min-width': '100%' }"
+            responsiveLayout="scroll"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="nomineeName" style="width: 40%">
+                  Name <p-sortIcon field="nomineeName" />
+                </th>
+                <th pSortableColumn="approvedNominations" style="width: 30%">
+                  Approved <p-sortIcon field="approvedNominations" />
+                </th>
+                <th style="width: 30%">Department</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-nominee>
+              <tr>
+                <td>
+                  <strong>{{ nominee.nomineeName }}</strong>
+                  <br />
+                  <small *ngIf="nominee.nomineeEmail">{{
+                    nominee.nomineeEmail
+                  }}</small>
+                </td>
+                <td>
+                  <span class="badge badge-success">{{
+                    nominee.approvedNominations
+                  }}</span>
+                </td>
+                <td>{{ nominee.department || "—" }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="3" class="text-center">
+                  No approved nominations found for this period
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</div>

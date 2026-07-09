@@ -1,0 +1,115 @@
+<p-card styleClass="component-card">
+  <ng-template pTemplate="title">Top Nominees</ng-template>
+  <div class="table-container" *ngIf="data && data.topNominees.length > 0">
+    <div class="table-filters">
+      <input
+        type="text"
+        class="search-input"
+        [value]="searchTerm"
+        (input)="searchTerm = $any($event.target).value"
+        placeholder="Search name, email, or department"
+        aria-label="Search nominees"
+      />
+
+      <select
+        class="filter-select"
+        [value]="departmentFilter"
+        (change)="departmentFilter = $any($event.target).value"
+        aria-label="Filter by department"
+      >
+        <option value="">All Departments</option>
+        <option
+          *ngFor="let department of departmentOptions"
+          [value]="department"
+        >
+          {{ department }}
+        </option>
+      </select>
+
+      <select
+        class="filter-select"
+        [value]="approvalFilter"
+        (change)="approvalFilter = $any($event.target).value"
+        aria-label="Filter by approval status"
+      >
+        <option value="all">All Approval Status</option>
+        <option value="approved">Has Approved</option>
+        <option value="notApproved">No Approved</option>
+      </select>
+    </div>
+
+    <p-table
+      [value]="filteredNominees"
+      styleClass="nominees-table"
+      [tableStyle]="{ 'min-width': '60rem' }"
+      sortMode="single"
+      [sortField]="sortField"
+      [sortOrder]="sortOrder"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="nomineeName">
+            Name
+            <p-sortIcon field="nomineeName"></p-sortIcon>
+          </th>
+          <th pSortableColumn="department">
+            Department
+            <p-sortIcon field="department"></p-sortIcon>
+          </th>
+          <th pSortableColumn="totalRecognitions">
+            Recognitions
+            <p-sortIcon field="totalRecognitions"></p-sortIcon>
+          </th>
+          <th pSortableColumn="approvedRecognitions">
+            Approved
+            <p-sortIcon field="approvedRecognitions"></p-sortIcon>
+          </th>
+          <th pSortableColumn="averageServiceRating">
+            Avg Rating
+            <p-sortIcon field="averageServiceRating"></p-sortIcon>
+          </th>
+          <th pSortableColumn="mostRecentRecognition">
+            Most Recent
+            <p-sortIcon field="mostRecentRecognition"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-nominee>
+        <tr>
+          <td class="nominee-name">
+            <strong>{{ nominee.nomineeName }}</strong>
+            <div class="nominee-email" *ngIf="nominee.nomineeEmail">
+              {{ nominee.nomineeEmail }}
+            </div>
+          </td>
+          <td>{{ nominee.department || "-" }}</td>
+          <td>
+            {{ nominee.totalRecognitions }}
+          </td>
+          <td>
+            {{ nominee.approvedRecognitions }}
+          </td>
+          <td>
+            <div class="rating">
+              <span class="star">★</span>
+              {{ nominee.averageServiceRating.toFixed(2) }}
+            </div>
+          </td>
+          <td class="date">
+            {{ nominee.mostRecentRecognition | date: "short" }}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6" class="filtered-empty-state">
+            No nominees match the current filters
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div *ngIf="data && data.topNominees.length === 0" class="empty-state">
+    No nominee data available
+  </div>
+</p-card>

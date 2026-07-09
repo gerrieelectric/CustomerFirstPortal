@@ -1,0 +1,87 @@
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.9rem;
+}
+
+.type-item {
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  padding: 0.85rem 0.95rem;
+  background-color: var(--app-surface-muted);
+}
+
+.type-header {
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.type-header h4 {
+  margin: 0;
+  color: var(--app-text);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.type-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.label {
+  font-size: 0.93rem;
+  color: var(--app-muted-text);
+}
+
+.value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--app-text);
+  white-space: nowrap;
+}
+
+.approval-rate {
+  margin-bottom: 0.55rem;
+}
+
+.rate-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.93rem;
+  margin-bottom: 0.3rem;
+  color: var(--app-muted-text);
+}
+
+.rate-percentage {
+  font-weight: 600;
+  color: var(--app-text);
+}
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.rating .star {
+  color: #f59e0b;
+  margin-right: 0.15rem;
+}
+
+@media (max-width: 900px) {
+  .type-grid {
+    grid-template-columns: 1fr;
+  }
+}

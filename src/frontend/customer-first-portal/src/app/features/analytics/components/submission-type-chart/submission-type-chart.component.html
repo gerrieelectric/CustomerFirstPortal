@@ -1,0 +1,39 @@
+<p-card styleClass="component-card">
+  <ng-template pTemplate="title">Submission Type Analysis</ng-template>
+  <div class="type-grid" *ngIf="data">
+    <div class="type-item" *ngFor="let type of data.types">
+      <div class="type-header">
+        <h4>{{ getSubmissionTypeLabel(type.submissionType) }}</h4>
+      </div>
+      <div class="type-stats">
+        <div class="stat">
+          <span class="label">Total</span>
+          <span class="value">{{ type.count }}</span>
+        </div>
+        <div class="stat">
+          <span class="label">Approved</span>
+          <span class="value success">{{ type.approvedCount }}</span>
+        </div>
+        <div class="stat">
+          <span class="label">Rejected</span>
+          <span class="value error">{{ type.rejectedCount }}</span>
+        </div>
+      </div>
+      <div class="approval-rate">
+        <div class="rate-label">
+          <span>Approval Rate</span>
+          <span class="rate-percentage"
+            >{{ type.approvalRate.toFixed(2) }}%</span
+          >
+        </div>
+        <p-progressbar [value]="+type.approvalRate.toFixed(2)"></p-progressbar>
+      </div>
+      <div class="rating">
+        <span class="label">Avg Rating</span>
+        <span class="value">
+          <span class="star">★</span> {{ type.averageServiceRating.toFixed(2) }}
+        </span>
+      </div>
+    </div>
+  </div>
+</p-card>

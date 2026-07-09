@@ -1,4 +1,4 @@
-# Customer First Portal
+# Customer First Employee Driven
 
 Employee recognition and acknowledgment platform built with Angular, ASP.NET Core, and SQL Server. Supports employee-to-employee and employee-on-behalf-of-customer submissions, with admin review/approval workflow, email notifications, analytics, and Gerrie integration.
 
@@ -8,21 +8,20 @@ Employee recognition and acknowledgment platform built with Angular, ASP.NET Cor
 CustomerFirstPortal/
 ├── src/
 │   ├── frontend/                 # Angular 19 web application
-│   ├── backend/                  # ASP.NET Core 8 API
+│   ├── backend/                  # ASP.NET Core API
+│   ├── database/                 # SQL database project and DACPAC output
 │   └── shared/                   # Shared contracts and models
-├── infrastructure/               # Terraform, Bicep, Docker configs
-├── .github/                      # GitHub Actions workflows
-└── docker-compose.yml            # Local development environment
+├── infrastructure/               # Terraform, Bicep
+└── .github/                      # GitHub Actions workflows
 ```
 
 ## Prerequisites
 
 - Node.js 20+ and npm 10+
-- .NET 8 SDK
-- SQL Server 2019+ (on-prem or container)
+- .NET 8+ SDK
+- SQL Server 2019+ (on-prem)
 - Azure Storage account (Blob for attachments)
 - Microsoft Entra ID tenant (for authentication)
-- Docker & Docker Compose (for local dev environment)
 
 ## Getting Started
 
@@ -53,16 +52,40 @@ npm start
 
 App runs on `http://localhost:4200` by default.
 
-### 4. Local Development with Docker Compose
+### 4. Database Project
 
 ```bash
-docker-compose up -d
+cd src/database/CustomerFirstPortal.Database
+dotnet build CustomerFirstPortal.Database.sqlproj
 ```
 
-This starts:
-- SQL Server on port 1433
-- API on port 5001
-- Angular dev server on port 4200
+This produces a DACPAC at `bin/Debug/CustomerFirstPortal.Database.dacpac`.
+
+### 5. Publish Database to On-Prem SQL Server
+
+Update the publish profile at `src/database/CustomerFirstPortal.Database/Publish/OnPrem.publish.xml`, then publish using either Visual Studio SQL Database Projects or `sqlpackage`.
+
+Example `sqlpackage` publish command:
+
+```bash
+sqlpackage /Action:Publish /SourceFile:"src/database/CustomerFirstPortal.Database/bin/Debug/CustomerFirstPortal.Database.dacpac" /Profile:"src/database/CustomerFirstPortal.Database/Publish/OnPrem.publish.xml"
+```
+
+### 6. Running the Application
+
+Once your SQL Server is reachable and the initial migration is applied:
+
+**Backend:**
+```bash
+cd src/backend
+dotnet run
+```
+
+**Frontend:**
+```bash
+cd src/frontend/customer-first-portal
+npm start
+```
 
 ## Configuration
 
@@ -87,6 +110,12 @@ See `src/backend/appsettings.json` and `src/frontend/environment.ts` for configu
 - **Portal.Application** - Business logic, commands, queries, validators
 - **Portal.Domain** - Core entities, enums, value objects
 - **Portal.Infrastructure** - EF Core, storage, notifications, Gerrie client
+
+## Database Project
+
+- **CustomerFirstPortal.Database** - SDK-style SQL project that builds a DACPAC for deployment to on-prem SQL Server
+- Initial schema includes admin users, submissions, attachments, review history, Gerrie sync events, audit events, and an analytics view
+- Publish profile template is at `src/database/CustomerFirstPortal.Database/Publish/OnPrem.publish.xml`
 
 ## Phase 1 Features
 

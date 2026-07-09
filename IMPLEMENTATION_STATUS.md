@@ -7,7 +7,7 @@
 - ✅ Angular 19 frontend scaffolded with routing and SCSS
 - ✅ ASP.NET Core 10 backend with 5-layer clean architecture
 - ✅ Git repository initialized with initial commit
-- ✅ Docker Compose for local dev (SQL Server + Azurite)
+
 
 ### Configuration & Documentation
 - ✅ README.md with project overview and structure

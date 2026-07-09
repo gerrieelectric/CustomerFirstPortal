@@ -1,0 +1,17 @@
+<p-card styleClass="component-card">
+  <ng-template pTemplate="title">Submissions by Status</ng-template>
+  <div class="status-list" *ngIf="data">
+    <div class="status-item" *ngFor="let status of data.statuses">
+      <div class="status-info">
+        <span class="status-name">{{ status.status }}</span>
+        <span class="status-count">{{ status.count }}</span>
+      </div>
+      <p-progressbar
+        [value]="+status.percentageOfTotal.toFixed(2)"
+      ></p-progressbar>
+      <span class="status-percentage"
+        >{{ status.percentageOfTotal.toFixed(2) }}%</span
+      >
+    </div>
+  </div>
+</p-card>

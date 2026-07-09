@@ -1,0 +1,17 @@
+From: John Smith <john.smith@examplecompany.com>
+To: support@gerrie.com
+Subject: Thank you for outstanding service
+Date: Mon, 6 Jul 2026 09:14:00 -0500
+
+Hi team,
+
+I just wanted to reach out and say that Zachary VanderBurgt was extremely helpful
+when our order got delayed last week. He tracked down the shipment, kept me
+updated every step of the way, and made sure we got what we needed in time for
+our project. That kind of service is why we keep coming back.
+
+Best regards,
+John Smith
+Purchasing Manager
+Example Company
+john.smith@examplecompany.com
