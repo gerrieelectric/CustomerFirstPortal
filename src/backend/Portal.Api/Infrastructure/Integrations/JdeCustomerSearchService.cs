@@ -110,11 +110,7 @@ public sealed class JdeCustomerSearchService : ICustomerSearchService
                 }
             }
 
-            var normalized = customers
-                .Where(customer => customer.Length > 0)
-                .Distinct(StringComparer.OrdinalIgnoreCase)
-                .OrderBy(customer => customer)
-                .ToList();
+            var normalized = CustomerNameNormalizer.NormalizeAndDeduplicate(customers);
 
             _logger.LogInformation("Loaded {CustomerCount} customer names from JDE for search cache.", normalized.Count);
             return normalized;

@@ -49,7 +49,18 @@ public static class InfrastructureServiceExtensions
             client.Timeout = TimeSpan.FromSeconds(30);
         });
 
-        services.AddScoped<IAttachmentStorageService, AzureBlobAttachmentStorageService>();
+        // Register attachment storage conditionally - only if blob connection string is configured
+        var azureStorageOptions = configuration.GetSection("AzureStorage").Get<AzureStorageOptions>();
+        if (!string.IsNullOrWhiteSpace(azureStorageOptions?.BlobConnectionString))
+        {
+            services.AddScoped<IAttachmentStorageService, AzureBlobAttachmentStorageService>();
+        }
+        else
+        {
+            // Register a stub that throws when used (not during startup)
+            services.AddScoped<IAttachmentStorageService>(sp =>
+                new StubAttachmentStorageService("AzureStorage:BlobConnectionString is not configured."));
+        }
         services.AddScoped<IAdminSubmissionNotificationService, AdminSubmissionNotificationService>();
         services.AddScoped<INotificationDispatchProcessor, AdminSubmissionNotificationService>();
         services.AddScoped<IGerrieSyncService, GerrieSyncService>();

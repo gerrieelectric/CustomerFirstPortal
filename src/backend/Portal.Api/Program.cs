@@ -193,6 +193,11 @@ static void ValidateSqlTransportSecurity(IConfiguration configuration, bool isDe
     var allowInsecureInDevelopment =
         configuration.GetValue<bool>("Security:AllowInsecureSqlTransportInDevelopment");
 
+    // Opt-in flag for environments where the SQL Server uses a self-signed/internal certificate.
+    // Encryption is still required; only certificate chain validation is relaxed.
+    var allowTrustedServerCertificate =
+        configuration.GetValue<bool>("Security:AllowTrustedServerCertificate");
+
     var sqlConnectionStrings = new (string Name, string? Value)[]
     {
         ("ConnectionStrings:DefaultConnection", configuration.GetConnectionString("DefaultConnection")),
@@ -225,7 +230,7 @@ static void ValidateSqlTransportSecurity(IConfiguration configuration, bool isDe
                 violations.Add($"{name} must set Encrypt=True");
             }
 
-            if (!trustServerCertIsFalse)
+            if (!trustServerCertIsFalse && !allowTrustedServerCertificate)
             {
                 violations.Add($"{name} must set TrustServerCertificate=False");
             }
